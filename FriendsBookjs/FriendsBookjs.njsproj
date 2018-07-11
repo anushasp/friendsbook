@@ -1,0 +1,281 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">14.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <Name>FriendsBookjs</Name>
+    <RootNamespace>FriendsBookjs</RootNamespace>
+    <LastActiveSolutionConfig>Debug|Any CPU</LastActiveSolutionConfig>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>9d23770f-14a4-4be9-8635-e97cd097c376</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <StartupFile>app.js</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <ProjectTypeGuids>{3AF33F2E-1136-4D97-BBB7-1795711AC8B8};{349c5851-65df-11da-9384-00065b846f21};{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}</ProjectTypeGuids>
+    <NodejsPort>1337</NodejsPort>
+    <StartWebBrowser>true</StartWebBrowser>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="app.js" />
+    <Compile Include="public\app.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\bootstraps\dist\js\bootstrap.js" />
+    <Compile Include="public\bootstraps\dist\js\bootstrap.min.js" />
+    <Compile Include="public\bootstraps\dist\js\npm.js" />
+    <Compile Include="public\bootstraps\Gruntfile.js" />
+    <Compile Include="public\bootstraps\grunt\bs-commonjs-generator.js" />
+    <Compile Include="public\bootstraps\grunt\bs-glyphicons-data-generator.js" />
+    <Compile Include="public\bootstraps\grunt\bs-lessdoc-parser.js" />
+    <Compile Include="public\bootstraps\grunt\bs-raw-files-generator.js" />
+    <Compile Include="public\bootstraps\js\affix.js" />
+    <Compile Include="public\bootstraps\js\alert.js" />
+    <Compile Include="public\bootstraps\js\button.js" />
+    <Compile Include="public\bootstraps\js\carousel.js" />
+    <Compile Include="public\bootstraps\js\collapse.js" />
+    <Compile Include="public\bootstraps\js\dropdown.js" />
+    <Compile Include="public\bootstraps\js\modal.js" />
+    <Compile Include="public\bootstraps\js\popover.js" />
+    <Compile Include="public\bootstraps\js\scrollspy.js" />
+    <Compile Include="public\bootstraps\js\tab.js" />
+    <Compile Include="public\bootstraps\js\tooltip.js" />
+    <Compile Include="public\bootstraps\js\transition.js" />
+    <Compile Include="public\friendrequest.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\friends.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\home.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\JavaScripts\angular-resource.js" />
+    <Compile Include="public\JavaScripts\angular-route.js" />
+    <Compile Include="public\JavaScripts\angular.js" />
+    <Compile Include="public\JavaScripts\core.js" />
+    <Compile Include="public\JavaScripts\jquery.js" />
+    <Compile Include="public\login.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\messenger.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\notification.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="public\profile.js">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="routes\index.js" />
+    <Compile Include="routes\users.js" />
+    <Content Include="package.json" />
+    <Content Include="public\bootstraps\.bower.json" />
+    <Content Include="public\bootstraps\bower.json" />
+    <Content Include="public\bootstraps\dist\css\bootstrap-theme.css" />
+    <Content Include="public\bootstraps\dist\css\bootstrap-theme.css.map" />
+    <Content Include="public\bootstraps\dist\css\bootstrap-theme.min.css" />
+    <Content Include="public\bootstraps\dist\css\bootstrap.css" />
+    <Content Include="public\bootstraps\dist\css\bootstrap.css.map" />
+    <Content Include="public\bootstraps\dist\css\bootstrap.min.css" />
+    <Content Include="public\bootstraps\dist\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="public\bootstraps\dist\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="public\bootstraps\dist\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="public\bootstraps\dist\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="public\bootstraps\dist\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="public\bootstraps\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="public\bootstraps\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="public\bootstraps\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="public\bootstraps\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="public\bootstraps\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="public\bootstraps\grunt\.jshintrc" />
+    <Content Include="public\bootstraps\grunt\configBridge.json" />
+    <Content Include="public\bootstraps\grunt\sauce_browsers.yml" />
+    <Content Include="public\bootstraps\js\.jscsrc" />
+    <Content Include="public\bootstraps\js\.jshintrc" />
+    <Content Include="public\bootstraps\less\.csscomb.json" />
+    <Content Include="public\bootstraps\less\.csslintrc" />
+    <Content Include="public\bootstraps\less\alerts.less" />
+    <Content Include="public\bootstraps\less\badges.less" />
+    <Content Include="public\bootstraps\less\bootstrap.less" />
+    <Content Include="public\bootstraps\less\breadcrumbs.less" />
+    <Content Include="public\bootstraps\less\button-groups.less" />
+    <Content Include="public\bootstraps\less\buttons.less" />
+    <Content Include="public\bootstraps\less\carousel.less" />
+    <Content Include="public\bootstraps\less\close.less" />
+    <Content Include="public\bootstraps\less\code.less" />
+    <Content Include="public\bootstraps\less\component-animations.less" />
+    <Content Include="public\bootstraps\less\dropdowns.less" />
+    <Content Include="public\bootstraps\less\forms.less" />
+    <Content Include="public\bootstraps\less\glyphicons.less" />
+    <Content Include="public\bootstraps\less\grid.less" />
+    <Content Include="public\bootstraps\less\input-groups.less" />
+    <Content Include="public\bootstraps\less\jumbotron.less" />
+    <Content Include="public\bootstraps\less\labels.less" />
+    <Content Include="public\bootstraps\less\list-group.less" />
+    <Content Include="public\bootstraps\less\media.less" />
+    <Content Include="public\bootstraps\less\mixins.less" />
+    <Content Include="public\bootstraps\less\mixins\alerts.less" />
+    <Content Include="public\bootstraps\less\mixins\background-variant.less" />
+    <Content Include="public\bootstraps\less\mixins\border-radius.less" />
+    <Content Include="public\bootstraps\less\mixins\buttons.less" />
+    <Content Include="public\bootstraps\less\mixins\center-block.less" />
+    <Content Include="public\bootstraps\less\mixins\clearfix.less" />
+    <Content Include="public\bootstraps\less\mixins\forms.less" />
+    <Content Include="public\bootstraps\less\mixins\gradients.less" />
+    <Content Include="public\bootstraps\less\mixins\grid-framework.less" />
+    <Content Include="public\bootstraps\less\mixins\grid.less" />
+    <Content Include="public\bootstraps\less\mixins\hide-text.less" />
+    <Content Include="public\bootstraps\less\mixins\image.less" />
+    <Content Include="public\bootstraps\less\mixins\labels.less" />
+    <Content Include="public\bootstraps\less\mixins\list-group.less" />
+    <Content Include="public\bootstraps\less\mixins\nav-divider.less" />
+    <Content Include="public\bootstraps\less\mixins\nav-vertical-align.less" />
+    <Content Include="public\bootstraps\less\mixins\opacity.less" />
+    <Content Include="public\bootstraps\less\mixins\pagination.less" />
+    <Content Include="public\bootstraps\less\mixins\panels.less" />
+    <Content Include="public\bootstraps\less\mixins\progress-bar.less" />
+    <Content Include="public\bootstraps\less\mixins\reset-filter.less" />
+    <Content Include="public\bootstraps\less\mixins\resize.less" />
+    <Content Include="public\bootstraps\less\mixins\responsive-visibility.less" />
+    <Content Include="public\bootstraps\less\mixins\size.less" />
+    <Content Include="public\bootstraps\less\mixins\tab-focus.less" />
+    <Content Include="public\bootstraps\less\mixins\table-row.less" />
+    <Content Include="public\bootstraps\less\mixins\text-emphasis.less" />
+    <Content Include="public\bootstraps\less\mixins\text-overflow.less" />
+    <Content Include="public\bootstraps\less\mixins\vendor-prefixes.less" />
+    <Content Include="public\bootstraps\less\modals.less" />
+    <Content Include="public\bootstraps\less\navbar.less" />
+    <Content Include="public\bootstraps\less\navs.less" />
+    <Content Include="public\bootstraps\less\normalize.less" />
+    <Content Include="public\bootstraps\less\pager.less" />
+    <Content Include="public\bootstraps\less\pagination.less" />
+    <Content Include="public\bootstraps\less\panels.less" />
+    <Content Include="public\bootstraps\less\popovers.less" />
+    <Content Include="public\bootstraps\less\print.less" />
+    <Content Include="public\bootstraps\less\progress-bars.less" />
+    <Content Include="public\bootstraps\less\responsive-embed.less" />
+    <Content Include="public\bootstraps\less\responsive-utilities.less" />
+    <Content Include="public\bootstraps\less\scaffolding.less" />
+    <Content Include="public\bootstraps\less\tables.less" />
+    <Content Include="public\bootstraps\less\theme.less" />
+    <Content Include="public\bootstraps\less\thumbnails.less" />
+    <Content Include="public\bootstraps\less\tooltip.less" />
+    <Content Include="public\bootstraps\less\type.less" />
+    <Content Include="public\bootstraps\less\utilities.less" />
+    <Content Include="public\bootstraps\less\variables.less" />
+    <Content Include="public\bootstraps\less\wells.less" />
+    <Content Include="public\bootstraps\LICENSE" />
+    <Content Include="public\bootstraps\package.json" />
+    <Content Include="public\bootstraps\README.md" />
+    <Content Include="public\index.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\friendprofile.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\friendrequest.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\friends.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\home.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\login.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\messages.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\notifications.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\profile.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\stylesheets\main.css" />
+    <Content Include="README.md" />
+    <Content Include="views\index.pug" />
+    <Content Include="views\layout.pug" />
+    <Content Include="views\error.pug" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="public\" />
+    <Folder Include="public\bootstraps\dist\" />
+    <Folder Include="public\bootstraps\dist\css\" />
+    <Folder Include="public\bootstraps\dist\fonts\" />
+    <Folder Include="public\bootstraps\dist\js\" />
+    <Folder Include="public\bootstraps\fonts\" />
+    <Folder Include="public\bootstraps\grunt\" />
+    <Folder Include="public\bootstraps\js\" />
+    <Folder Include="public\bootstraps\less\" />
+    <Folder Include="public\bootstraps\less\mixins\" />
+    <Folder Include="public\images\" />
+    <Folder Include="public\javascripts\" />
+    <Folder Include="public\bootstraps\" />
+    <Folder Include="public\pages\" />
+    <Folder Include="public\stylesheets\" />
+    <Folder Include="routes\" />
+    <Folder Include="views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config" />
+  </ItemGroup>
+  <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />
+  <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:48022/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:1337</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

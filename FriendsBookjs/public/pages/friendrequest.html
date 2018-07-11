@@ -1,0 +1,16 @@
+﻿
+<div ng-controller="friendrequestController" class="request">
+
+    <h3>Search for an Account</h3>
+    <div class="form-group">
+    <input type="text" ng-model="searchname"> &nbsp;
+    <button ng-click="search()" class="btn btn-primary btn-block btn-large">Search</button> <br>
+    {{CheckAccount}}
+    </div>
+
+    <div class="form-group" ng-show="show">
+    <button ng-click="Send()" class="btn btn-primary btn-block btn-large">Send Friend Request</button> <br>
+    {{requestResult}}
+    </div>
+
+</div>

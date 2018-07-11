@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>FriendsBook</title>
+    <link href="../bootstraps/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+    <script src="app.js"></script>
+    <script src="login.js"></script>
+    <script src="home.js"></script>
+    <script src="friends.js"></script>
+    <script src="profile.js"></script>
+    <script src="friendrequest.js"></script>
+    <script src="createpost.js"></script>
+    <script src="messenger.js"></script>
+    <script src="notification.js"></script>
+    <style>
+        body {
+            background: #f1f1f1;
+        }
+
+        .navbar-inverse {
+            background-color: #3B5998;
+            border-color: #E7E7E7;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgb(59, 89, 152);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <main>
+            <div ui-view="body" ng-app="FriendsBook"></div>
+        </main>
+    </header>
+    <main>
+    </main>
+    <footer></footer>
+
+</body>
+</html>

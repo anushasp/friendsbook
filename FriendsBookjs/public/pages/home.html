@@ -1,0 +1,100 @@
+﻿<div ng-controller="homeController" class="Home">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="col-md-2">
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand"> Welcome {{currentuser}}! </a>
+            </div>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="searchname" placeholder="Search">
+                </div>
+                <button ng-click="search()" type="submit" class="btn btn-primary">Search</button>
+            </form>
+           
+            <div class="col-md-2 nav navbar-nav navbar-right">
+            </div>
+
+            <button ng-click="logout()" class="btn btn-primary navbar-btn navbar-right">Logout <span class="glyphicon glyphicon-off"></span></button>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ui-sref="home" ng-click="clicked=false"><i class="fa fa-home"></i></a></li>
+                <li><a ui-sref="friends"><i class="fa fa-users"></i></a></li>
+                <li><a ui-sref="profile"><i class="fa fa-address-card"></i></a></li>
+                <li><a ui-sref="notifications"><i class="fa fa-bell"></i><span class="badge">{{notnum}}</span></a></li>
+            </ul>
+        </div>
+    </nav>
+   
+    <div class="container-fluid" ng-show="clicked">
+
+        
+
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="panel panel-info">
+
+                <div class="panel-heading text-center">
+                    <h3>{{searchprof}}'s profile</h3> 
+
+                   
+                </div>
+
+                <div class="panel-body text-center">
+                    <div class="card">
+                        <h1>{{friendDetails.Name}}</h1>
+                        <p>Gender:{{friendDetails.Gender}}</p>
+                        <p class="title">School:{{friendDetails.School}}</p>
+                        <p>Birthday:{{friendDetails.Bday}}</p>
+                        <br />
+                        <p>
+                            
+                                <button class="btn btn-primary" ng-click="Send()" type="submit"><i class="fa fa-user-plus"></i></button>
+
+                                <button class="btn btn-primary" ng-click="Messenger()" type="submit"><i class="fa fa-envelope"></i></button>
+                            
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <div class="container-fluid" ng-show="!clicked">
+
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-8">
+
+
+                <div class="input-group">
+                    <textarea class="form-control custom-control" ng-model="newpost" rows="2" style="resize:none" placeholder="  What's on your mind?"></textarea>
+                    <span ng-click="createPost()" class="input-group-addon btn btn-primary">Share</span>
+                </div>
+
+
+                <br />
+                <div class="panel-group" ng-repeat="update in updateslist">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <b ng-style="myObj">{{update.posted}}</b>
+                        </div>
+                        <div class="panel-body">
+                            <b>{{update.updates}}</b>
+                            <pre><b><i>Comments:</i></b> {{update.comments}}</pre>
+                            <input type="text" ng-model="update.newcomment" placeholder="write a comment">
+                            <button ng-click="postcomment(update)" class="btn btn-primary">Post</button>
+                            {{update.result}}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>

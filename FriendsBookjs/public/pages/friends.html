@@ -1,0 +1,87 @@
+﻿<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand"
+               href="/">
+                Lists Of Friends
+            </a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="home"><i class="fa fa-home fa-lg"></i></a></li>
+            </ul>
+    </div>
+</nav>
+
+
+
+<div class="container-fluid">
+
+
+
+    <div ng-controller="friendsController" class="Friends">
+
+       
+
+        <div class="row">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-6">
+                <form class="form-inline well well-sm">
+                    <span class="glyphicon glyphicon-search"></span>
+
+                    <div class="form-group">
+                        <input type="text"
+                               class="form-control"
+                               id="name"
+                               ng-model="search"
+                               placeholder="Search friend..." />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-6">
+                <table class="table table-bordered">
+                    <tr ng-style="{'background-color':'lightblue'}">
+                        <th>#</th>
+                        <th>Friends</th>
+                    </tr>
+
+                    <tr ng-repeat="friend in friendsList | filter:sensitiveSearch" ng-style="{
+				 'background-color': $index == selectedIndex ? 'lightgray' : ''
+				 }" ng-click="selectPerson(friend, $index)">
+                        <td>{{$index}}</td>
+                        <td>{{friend}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            
+
+            <div class="col-md-4">
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">Details</div>
+                    <div class="panel-body">
+                        <dl>
+                            <dt>Name</dt>
+                            <dd>{{friendDetails.Name}}</dd>
+                            <dt>Gender</dt>
+                            <dd>{{friendDetails.Gender}}</dd>
+                            <dt>School</dt>
+                            <dd>{{friendDetails.School}}</dd>
+                            <dt>Bday</dt>
+                            <dd>{{friendDetails.Bday}}</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
