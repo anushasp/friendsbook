@@ -21,8 +21,10 @@ app.controller("notifController", function ($scope, $http, $state) {
                 $scope.notlist = response.data;
             });
         });
+    }
 
-        
+    $scope.Reject = function (not) {
+        //TODO - implementation.
     }
 
 });
