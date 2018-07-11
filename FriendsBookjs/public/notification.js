@@ -24,7 +24,7 @@ app.controller("notifController", function ($scope, $http, $state) {
     }
 
     $scope.Reject = function (not) {
-        //TODO - implementation.
+        //TODO - implementation - test
     }
 
 });
