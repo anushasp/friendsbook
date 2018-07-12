@@ -1,11 +1,26 @@
 ﻿<div ng-controller="myController" class="login">
-    
-    <h2>Login to your FreindsBook Account</h2>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="col-md-2">
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand"> FreindsBook </a>
+            </div>
+            <div class="col-md-2 nav navbar-nav navbar-right">
+            </div>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                   
+                    <input type="text" ng-model="username" placeholder="Username">&nbsp;
+                  
+                    <input type="password" ng-model="password" placeholder="Password">&nbsp;
+                    <button ng-click="login()" class="btn btn-primary">Log In</button>
+                </div>
+            </form>
 
-    UserName:
-    <input type="text" ng-model="username" placeholder="Username"><br>
-    Password:
-    <input type="password" ng-model="password" placeholder="Password"><br>
-    <button ng-click="login()" class="btn btn-primary">Login</button></br>
+        </div>
+    </nav>
+    
+    
 
 </div>

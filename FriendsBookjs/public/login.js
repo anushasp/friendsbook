@@ -1,7 +1,6 @@
 ﻿var app = angular.module('FriendsBook')
     app.controller("myController", function ($scope, $http, $state) {
-        $scope.username = "anusha";
-        $scope.password = "anusha";
+        
         $scope.login = function ()
         {
             if (!$scope.username)
