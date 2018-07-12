@@ -51,6 +51,16 @@
 
                         }
                     }
+            })
+            .state("messengerfriends",
+                {
+                    url: "/messenger",
+                    views: {
+                        body: {
+                            templateUrl: "pages/messengerfriends.html",
+
+                        }
+                    }
                 })
             .state("notifications",
                 {

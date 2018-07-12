@@ -1,0 +1,36 @@
+﻿<div ng-controller="messengerController" class="messg">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="col-md-3">
+            </div>
+            <div class="navbar-header">
+                <a class="navbar-brand">FriendsBook Messenger </a>
+            </div>
+            <div class="col-md-3 nav navbar-nav navbar-right">
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a ui-sref="home"><i class="fa fa-home fa-lg"></i></a></li>
+            </ul>
+
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+
+            <div class="panel-group" ng-repeat="msg in messages"   ng-click="selectMsg(msg)">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <b ng-style="myObj">{{msg.friendname}}</b>
+                    </div>
+                    <div class="panel-body">
+                        {{msg.lastmsg}}
+                    </div>
+                </div>
+            </div>
+
+           
+        </div>
+    </div>
+
+</div>

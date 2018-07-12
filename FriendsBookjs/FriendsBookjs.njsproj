@@ -74,6 +74,9 @@
     <Compile Include="public\messenger.js">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="public\messengerfriends.js">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="public\notification.js">
       <SubType>Code</SubType>
     </Compile>
@@ -200,6 +203,9 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\pages\messages.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\pages\messengerfriends.html">
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\pages\notifications.html">

@@ -9,11 +9,14 @@
             </div>
             <form class="navbar-form navbar-left">
                 <div class="form-group">
-                    <input type="text" class="form-control" ng-model="searchname" placeholder="Search">
+                    <input list="user" ng-model="searchname" class="form-control" placeholder="Search">
+                    <datalist id="user">
+                        <option ng-repeat="user in users" value={{user}}>
+                    </datalist>
                 </div>
                 <button ng-click="search()" type="submit" class="btn btn-primary">Search</button>
             </form>
-           
+
             <div class="col-md-2 nav navbar-nav navbar-right">
             </div>
 
@@ -23,22 +26,21 @@
                 <li><a ui-sref="friends"><i class="fa fa-users"></i></a></li>
                 <li><a ui-sref="profile"><i class="fa fa-address-card"></i></a></li>
                 <li><a ui-sref="notifications"><i class="fa fa-bell"></i><span class="badge">{{notnum}}</span></a></li>
+                <li><a ui-sref="messengerfriends"><i class="fa fa-envelope"></i></a></li>
             </ul>
         </div>
     </nav>
-   
+
     <div class="container-fluid" ng-show="clicked">
 
-        
+
 
         <div class="col-md-2"></div>
         <div class="col-md-8">
-            <div class="panel panel-info">
+            <div class="panel panel-info"  ng-hide="noaccount">
 
                 <div class="panel-heading text-center">
-                    <h3>{{searchprof}}'s profile</h3> 
-
-                   
+                    <h3>{{searchprof}}'s profile</h3>
                 </div>
 
                 <div class="panel-body text-center">
@@ -49,52 +51,50 @@
                         <p>Birthday:{{friendDetails.Bday}}</p>
                         <br />
                         <p>
-                            
-                                <button class="btn btn-primary" ng-click="Send()" type="submit"><i class="fa fa-user-plus"></i></button>
 
-                                <button class="btn btn-primary" ng-click="Messenger()" type="submit"><i class="fa fa-envelope"></i></button>
-                            
+                            <button class="btn btn-primary" ng-show="checkfriends"><i class="fa fa-user-check"></i></button>
+                            <button class="btn btn-primary" ng-hide="checkfriends" ng-click="Send()" type="submit"><i class="fa fa-user-plus"></i></button> &nbsp;
+                            <button class="btn btn-primary" ng-click="Messenger()" type="submit"><i class="fa fa-envelope"></i></button>
                         </p>
                     </div>
-
+                   
                 </div>
+            </div>
+
+            <div class="alert alert-warning alert-dismissible fade in text-center" ng-show="noaccount">
+                <h3> Account not found!</h3> 
             </div>
         </div>
     </div>
 
+    <div class="container-fluid" ng-show="!clicked">
+
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-8">
 
 
-
-        <div class="container-fluid" ng-show="!clicked">
-
-            <div class="col-md-2">
-
+            <div class="input-group">
+                <textarea class="form-control custom-control" ng-model="newpost" rows="2" style="resize:none" placeholder="  What's on your mind?"></textarea>
+                <span ng-click="createPost()" class="input-group-addon btn btn-primary">Share</span>
             </div>
-            <div class="col-md-8">
 
-
-                <div class="input-group">
-                    <textarea class="form-control custom-control" ng-model="newpost" rows="2" style="resize:none" placeholder="  What's on your mind?"></textarea>
-                    <span ng-click="createPost()" class="input-group-addon btn btn-primary">Share</span>
-                </div>
-
-
-                <br />
-                <div class="panel-group" ng-repeat="update in updateslist">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <b ng-style="myObj">{{update.posted}}</b>
-                        </div>
-                        <div class="panel-body">
-                            <b>{{update.updates}}</b>
-                            <pre><b><i>Comments:</i></b> {{update.comments}}</pre>
-                            <input type="text" ng-model="update.newcomment" placeholder="write a comment">
-                            <button ng-click="postcomment(update)" class="btn btn-primary">Post</button>
-                            {{update.result}}
-                        </div>
+            <br />
+            <div class="panel-group" ng-repeat="update in updateslist">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <b ng-style="myObj">{{update.posted}}</b>
                     </div>
-
+                    <div class="panel-body">
+                        <b>{{update.updates}}</b>
+                        <pre><b><i>Comments:</i></b> {{update.comments}}</pre>
+                        <input type="text" ng-model="update.newcomment" placeholder="write a comment">
+                        <button ng-click="postcomment(update)" class="btn btn-primary">Post</button>
+                        {{update.result}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>

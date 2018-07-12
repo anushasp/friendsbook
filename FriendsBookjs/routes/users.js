@@ -5,12 +5,10 @@ var fs = require('fs');
 var path = require('path');
 var mysql  =require('mysql');
 
-
 router.get('/', function (req, res)
 {
     res.send('respond with a resource');
 });
-
 
 router.get('/current', function (req, res)
 {
@@ -53,7 +51,6 @@ router.get('/current', function (req, res)
         
     });
 });
-
 
 router.get('/latestupdates', function (req, res) {
     var username = req.session.login;
@@ -178,7 +175,6 @@ router.get('/notificationsnum', function (req, res) {
         password: '1517381',
         database: 'saripellaa6306'
     });
-
     connection.connect(function (err) {
         if (!err) {
             console.log("notificationsUpdates Database is connected ... nn");
@@ -189,15 +185,15 @@ router.get('/notificationsnum', function (req, res) {
     });
 
     connection.query("Delete from shownotifications");
-    var type = 0;
+   
    
     var showid = 1;
     var loop = 0;
     var count = 0;
    
-                connection.query("Select * from notifications " + "where userid = '" + id +
-                    "' and type = '" + type + "'", function (err, rows, fields) {
-
+    connection.query("Select * from notifications " + "where userid = '" + id + "'",
+        function (err, rows, fields)
+        {
                         if (err)
                         {
                             console.log(err);
@@ -213,10 +209,10 @@ router.get('/notificationsnum', function (req, res) {
                             count++;
                         }
                        res.status(200).send((count).toString());
-                        return;
+                       return;
                     });
        
-});
+        });
 
 router.get('/DisplayNotifications', function (req, res) {
     var notitems = [];
@@ -246,9 +242,15 @@ router.get('/DisplayNotifications', function (req, res) {
         var n = rows.length;
         
            for (var i = 0; i < n; i++)
-            {
-              notitems.push(rows[i].content);
-             
+           {
+               var content = rows[i].content;
+               var type = rows[i].type;
+               var notlist =
+                   {
+                       content: content,
+                       type:type
+                   }
+               notitems.push(notlist);
             }
            res.send(notitems);
             return;
@@ -296,6 +298,123 @@ router.post('/AcceptFriend', function (req, res) {
             return;
 
         });
+});
+
+router.post('/ReplyMsg', function (req, res) {
+    var id = req.session.login;
+    var not = req.body.not;
+    var friendname = "";
+    var connection = mysql.createConnection({
+        host: 'mis-sql.uhcl.edu',
+        user: 'saripellaa6306',
+        password: '1517381',
+        database: 'saripellaa6306'
+    });
+
+    connection.connect(function (err) {
+        if (!err) {
+            console.log("Friends Database is connected ... nn");
+
+        } else {
+            console.log("Error connecting database ... nn" + JSON.stringify(err));
+        }
+    });
+
+    connection.query("Select * from notifications where content = '" + not + "'", function (err, rows, fields) {
+
+
+        if (err)
+        {
+            console.log(err);
+        }
+
+        if (rows.length == 1)
+        {
+            friendname = rows[0].senderid;
+           
+        }
+        connection.query("Delete from notifications where content = '" + not + "'");
+        connection.query("Delete from shownotifications where content = '" + not + "'");
+        res.send(friendname);
+        return;
+
+    });
+})
+
+router.post('/RejectFriend', function (req, res) {
+    var id = req.session.login;
+    var not = req.body.not;
+    var result = "";
+    var connection = mysql.createConnection({
+        host: 'mis-sql.uhcl.edu',
+        user: 'saripellaa6306',
+        password: '1517381',
+        database: 'saripellaa6306'
+    });
+
+    connection.connect(function (err) {
+        if (!err) {
+            console.log("Friends Database is connected ... nn");
+
+        } else {
+            console.log("Error connecting database ... nn" + JSON.stringify(err));
+        }
+    });
+
+    connection.query("Select * from notifications where content = '" + not + "'", function (err, rows, fields) {
+
+
+        if (err) {
+            console.log(err);
+        }
+
+        if (rows.length == 1)
+        {
+            result = result + "Friend Request Rejected";
+        }
+        connection.query("Delete from notifications where content = '" + not + "'");
+        connection.query("Delete from shownotifications where content = '" + not + "'");
+        res.send(result);
+        return;
+    });
+});
+
+router.post('/IgnoreMsg', function (req, res) {
+    var id = req.session.login;
+    var not = req.body.not;
+    var result = "";
+    var connection = mysql.createConnection({
+        host: 'mis-sql.uhcl.edu',
+        user: 'saripellaa6306',
+        password: '1517381',
+        database: 'saripellaa6306'
+    });
+
+    connection.connect(function (err) {
+        if (!err) {
+            console.log("Friends Database is connected ... nn");
+
+        } else {
+            console.log("Error connecting database ... nn" + JSON.stringify(err));
+        }
+    });
+
+    connection.query("Select * from notifications where content = '" + not + "'", function (err, rows, fields) {
+
+
+        if (err) {
+            console.log(err);
+        }
+
+        if (rows.length == 1)
+        {
+            result = result + "Message Ignored";
+        }
+        connection.query("Delete from notifications where content = '" + not + "'");
+        connection.query("Delete from shownotifications where content = '" + not + "'");
+        res.send(result);
+        return;
+    });
 });
 
 router.get('/friends', function (req, res) {
@@ -409,6 +528,7 @@ router.post('/sendmsg/:friendname', function (req, res) {
             console.log("Error connecting database ... nn" + JSON.stringify(err));
         }
     });
+    
 
     connection.query("Select * from message "
         + "where (id1 = '" + friendname + "' and id2 = '" + id + "') || "
@@ -418,15 +538,19 @@ router.post('/sendmsg/:friendname', function (req, res) {
             }
             if (rows.length == 1) {
                 var message = rows[0].message;
-                message = message + "\n" + messg + "---- by " + id;
+                messg = messg + "---- by " + id;
+                message = message + "\n" + messg;
                 connection.query("Update message set message = '" + message
+                    + "' where (id1 = '" + friendname + "' and id2 = '" + id + "') || "
+                    + "(id1 = '" + id + "' and id2 = '" + friendname + "')");
+                connection.query("Update message set lastmsg = '" + messg
                     + "' where (id1 = '" + friendname + "' and id2 = '" + id + "') || "
                     + "(id1 = '" + id + "' and id2 = '" + friendname + "')");
             }
             else {
                 messg = messg + "---- by" + id;
                 connection.query("insert into message values "
-                    + "('" + friendname + "', '" + id + "', '" + messg + "')");
+                    + "('" + friendname + "', '" + id + "', '" + messg + "','"+ messg +"')");
 
             }
             connection.query("Select * from notificationnumber", function (err, res, fields) {
@@ -451,7 +575,93 @@ router.post('/sendmsg/:friendname', function (req, res) {
         });
 });
 
+router.get('/messenger', function (req, res) {
+    var id = req.session.login;
+    var messagelist = [];
+    var connection = mysql.createConnection({
+        host: 'mis-sql.uhcl.edu',
+        user: 'saripellaa6306',
+        password: '1517381',
+        database: 'saripellaa6306'
+    });
 
+    connection.connect(function (err) {
+        if (!err) {
+            console.log("Messenger Database is connected ... nn");
+
+        } else {
+            console.log("Error connecting database ... nn" + JSON.stringify(err));
+        }
+    });
+    
+    connection.query("Select * from message " + "where id1 = '" + id + "' || id2 = '" + id + "'", function (err, rows, fields) {
+
+            if (err) {
+                console.log(err);
+            }
+            var n = rows.length;
+           for (var i = 0; i < n; i++)
+           {
+                var friendname = "";
+               var lastmsg = "";
+               if (rows[i].id1 == id)
+               {
+                   friendname = rows[i].id2;
+               }
+               else
+               {
+                   friendname = rows[i].id1;
+               }
+                lastmsg = rows[i].lastmsg;
+              
+                var messageitem =
+                    {
+                        friendname: friendname,
+                        lastmsg: lastmsg
+                    }
+               messagelist.push(messageitem);
+            }
+           res.send(messagelist);
+           return;
+        });
+});
+
+router.get('/searchusers', function (req, res) {
+    var username = req.session.login;
+    var userslist = [];
+    var connection = mysql.createConnection({
+        host: 'mis-sql.uhcl.edu',
+        user: 'saripellaa6306',
+        password: '1517381',
+        database: 'saripellaa6306'
+    });
+
+    connection.connect(function (err) {
+        if (!err) {
+            console.log("Friends Database is connected ... nn");
+
+        } else {
+            console.log("Error connecting database ... nn" + JSON.stringify(err));
+        }
+    });
+
+    connection.query("Select * from friendbookaccount "
+        + "where userID <> '" + username + "'", function (err, rows, fields) {
+
+            console.log("query started ... nn");
+            if (err)
+            {
+                console.log(err);
+            }
+            var n = rows.length;
+            for (var i = 0; i < n; i++)
+            {
+                userslist.push(rows[i].userID)
+            }
+            res.send(userslist);
+            return;
+        });
+});
 
 router.post('/friendsprofile', function (req, res) {
     var username = req.session.login;
@@ -480,14 +690,19 @@ router.post('/friendsprofile', function (req, res) {
             if (err) {
                 console.log(err);
             }
-            var frienddetails =
+            if (rows.length == 1)
             {
-                    Name: rows[0].name,
-                    Gender: rows[0].gender,
-                    School: rows[0].school,
-                    Bday: rows[0].Bday,
-            }
+                var frienddetails =
+                    {
+                        Name: rows[0].name,
+                        Gender: rows[0].gender,
+                        School: rows[0].school,
+                        Bday: rows[0].Bday,
+                    }
 
+              
+            }
+           
             res.send(frienddetails);
             return;
 
@@ -543,9 +758,6 @@ router.post('/viewprofile', function (req, res) {
 });
 
 router.post('/checkaccount', function (req, res) {
-
-
-    console.log(req.body.searchname);
     var searchname = req.body.searchname;
     var check = "";
     var details = [];
@@ -584,13 +796,57 @@ router.post('/checkaccount', function (req, res) {
                         School: rows[0].school,
                         Bday: rows[0].Bday,
                     }
+                res.send(frienddetails);
             }
             else 
             {
-                frienddetails = "No such account";
+                var frienddetails = "No such account";
+                res.send(frienddetails);
             }
            
-            res.send(frienddetails);
+            return;
+        });
+});
+
+router.post('/checkfriends', function (req, res)
+{
+    var id = req.session.login;
+    var searchname = req.body.searchname;
+    var request = "";
+   
+    var connection = mysql.createConnection({
+        host: 'mis-sql.uhcl.edu',
+        user: 'saripellaa6306',
+        password: '1517381',
+        database: 'saripellaa6306'
+    });
+
+    connection.connect(function (err) {
+        if (!err) {
+            console.log("Friendsrequest Database is connected ... nn");
+
+        } else {
+            console.log("Error connecting database ... nn" + JSON.stringify(err));
+        }
+    });
+
+    connection.query("Select * from friends "
+        + "where (id1 = '" + searchname + "' and id2 = '" + id + "') or "
+        + "(id1 = '" + id + "' and id2 = '" + searchname + "')", function (err, rows, fields) {
+
+            console.log("query started ... nn");
+            if (err) {
+                console.log("err");
+            }
+            if (rows.length == 1) {
+                request = request + "pass";
+            }
+            else
+            {
+               request = request + "fail";
+            }
+            
+            res.send(request);
             return;
         });
 });

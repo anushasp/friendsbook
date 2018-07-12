@@ -1,7 +1,8 @@
 ﻿
 var app = angular.module('FriendsBook')
-app.controller("homeController", function ($scope, $http, $state) {
-    $scope.clicked = false;
+ app.controller("homeController", function ($scope, $http, $state) {
+     $scope.clicked = false;
+     $scope.searchname = "";
     $scope.myObj = {
         "color": "#3B5998",
         "font-size": "17px",
@@ -14,8 +15,16 @@ app.controller("homeController", function ($scope, $http, $state) {
         console.log(res.data);
         $scope.notnum = res.data;
     });
+    
     $scope.clicked = false;
-    $scope.searchname = "";
+
+    
+
+    $http.get("/users/searchusers").then(function (res) {
+        $scope.users = res.data;
+    });
+
+
     $scope.search = function ()
     {
         $scope.requestResult = "";
@@ -25,10 +34,26 @@ app.controller("homeController", function ($scope, $http, $state) {
             {
                 "searchname": $scope.searchname
             }
+        $http.post("/users/checkfriends", data).then(function (response)
+        {
+           
+            if (response.data == "pass")
+            {
+                $scope.checkfriends = true;
+            }
+            else {
+                $scope.checkfriends = false;
+
+            }
+        });
         $http.post("/users/checkaccount", data).then(function (response)
-        { console.log(response.data);
+        {
+            $scope.noaccount = false;
+            if (response.data == "No such account")
+            {
+                $scope.noaccount = true;
+            }
             $scope.friendDetails = response.data;
-            
         }); 
     }
 

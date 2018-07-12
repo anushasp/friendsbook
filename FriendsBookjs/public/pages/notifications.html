@@ -19,13 +19,17 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
             
-            <table class="table table-striped" ng-repeat="not in notlist">
+            <table class="table table-striped" >
                 <tbody>
-                    <tr>
-                        <td> {{not}}</td>
-                        <td>
-                            <button ng-click="Accept(not)" class="btn btn-primary">Accept</button>
-                            <button ng-click="Reject(not)" class="btn btn-primary">Reject</button>
+                    <tr ng-repeat="not in notlist">
+                        <td> {{not.content}}</td>
+                        <td ng-if="not.type==0">
+                            <button ng-click="Accept(not.content)" class="btn btn-primary">Accept</button>
+                            <button ng-click="Reject(not.content)" class="btn btn-primary">Reject</button>
+                        </td>
+                        <td ng-if="not.type==1">
+                            <button ng-click="Reply(not.content)" class="btn btn-primary">Reply</button>
+                            <button ng-click="Ignore(not.content)" class="btn btn-primary">Ignore</button>
                         </td>
                     </tr>
                 </tbody>
@@ -33,3 +37,4 @@
         </div>
     </div>
 </div>
+
