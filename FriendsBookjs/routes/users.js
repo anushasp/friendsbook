@@ -295,8 +295,7 @@ router.post('/AcceptFriend', function (req, res) {
         connection.query("Delete from notifications where content = '" + not + "'");
         connection.query("Delete from shownotifications where content = '" + not + "'");
         res.send(result);
-            return;
-
+        return;
         });
 });
 
@@ -754,6 +753,58 @@ router.post('/viewprofile', function (req, res) {
             res.send(msg);
             return;
 
+        });
+});
+router.post('/register', function (req, res) {
+    var name = req.body.name;
+    var gender = req.body.gender;
+    var userid = req.body.userid;
+    var password = req.body.password;
+    var school = req.body.school;
+    var month = req.body.month;
+    var day = req.body.day;
+    var year = req.body.year;
+    var bday = month + "/" + day + "/" + year;
+    var msg = "";
+
+    var connection = mysql.createConnection({
+        host: 'mis-sql.uhcl.edu',
+        user: 'saripellaa6306',
+        password: '1517381',
+        database: 'saripellaa6306'
+    });
+
+    connection.connect(function (err) {
+        if (!err) {
+            console.log("Friends Database is connected ... nn");
+
+        } else {
+            console.log("Error connecting database ... nn" + JSON.stringify(err));
+        }
+    });
+
+    connection.query("Select * from friendbookaccount "
+        + "where userID = '" + userid + "'", function (err, rows, fields) {
+            console.log("query started ... nn");
+
+            if (err) {
+                console.log(err);
+            }
+            if (rows.length == 1)
+            {
+                msg = msg + " You have an online account already ";
+                    
+            }
+            else
+            {
+                connection.query("insert into friendbookaccount values "
+                    + "('" + name + "', '" + gender + "', '" + userid + "', '" + password + "', '" + bday + "', '"
+                    + school + "')");
+
+                msg = msg + "Succesfully Registered";
+            }
+            res.send(msg);
+            return;
         });
 });
 

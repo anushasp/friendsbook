@@ -184,6 +184,11 @@
     <Content Include="public\bootstraps\LICENSE" />
     <Content Include="public\bootstraps\package.json" />
     <Content Include="public\bootstraps\README.md" />
+    <Content Include="public\images\globe.jpg" />
+    <Content Include="public\images\images.jpeg" />
+    <Content Include="public\images\map.png" />
+    <Content Include="public\images\network.png" />
+    <Content Include="public\images\pp.jpg" />
     <Content Include="public\index.html">
       <SubType>Code</SubType>
     </Content>

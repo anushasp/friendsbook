@@ -15,8 +15,8 @@ app.controller("notifController", function ($scope, $http, $state) {
                 "not": $scope.selectednot
             }
         $http.post("/users/AcceptFriend",data).then(function (response) {
-            $scope.res = response.data;
-            alert($scope.res);
+            $scope.result = response.data;
+            alert($scope.result);
             $http.get("/users/DisplayNotifications").then(function (response) {
                 $scope.notlist = response.data;
             });
